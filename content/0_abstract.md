@@ -16,7 +16,7 @@ authentication, authorization and resource management
 functionality for Solid. 
 By caching sessions for multiple profiles, it can 
 swap authentication on the fly to support mutliple 
-profiles for different workflows.
+profiles for different workflows.   
 <!-- Findings     -->
 <!-- ## No findings ## -->
 <!-- Conclusion   -->
