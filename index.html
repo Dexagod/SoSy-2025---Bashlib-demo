@@ -176,23 +176,22 @@ information via the interactive command line form.</p>
         <!-- * The AC mechanism is discovered on the fly -->
         <!-- * For managing Access Control Resources, we do not support the full suite of functionality yet, only the Universal API by INRUPT tooling. -->
 
-        <p>The Solid authorization mechanism determines how access to data is granted and managed, 
-ensuring that users and applications interact with resources according to predefined permissions. 
-Solid currently supports two distinct authorization specifications: 
-The <a href="todo: cite / footnote">Access Control Lists (ACLs)</a> specification and 
-the <a href="todo: cite / footnote">Access Control Policies (ACP)</a> specification. 
-The coexistence of these two specification in the Solid ecosystem adds complexity
-to streamline permission management for Solid workflows, 
-requiring seamless support for both authorization mechanisms.</p>
+        <p>The Solid authorization mechanism determines how resource access is granted and managed.
+The current Solid ecosystem supports two distinct authorization systems: 
+The <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solidproject.org/TR/wac">Web Access Control (WAC)</a> <span class="references">[<a href="#ref-4">4</a>]</span> specification and 
+the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solidproject.org/TR/acp">Access Control Policy (ACP)</a> <span class="references">[<a href="#ref-5">5</a>]</span> specification. 
+The coexistence of these two specification in the Solid ecosystem 
+adds complexity in having to support seamless integration between
+these competing authorization standards.</p>
 
-        <p>To address this, BashLib integrates support for both authorization specifications, 
-based on automated discovery of the used mechanism and adapting the used permission API
-on the fly.
-However, as the ACP specification diverges far from the WAC specification, 
-permission management is restricted to the resource level when automating 
-discovery of the authorization method used by the Solid Server interacted with.
-When prior knowledge of the use of WAC is known, recursive permission management
-can be enabled.</p>
+        <p>Bashlib integrates the core functionality of both authorization mechanisms 
+in their management of individual resources based on the identity of the
+requesting party. The used authorization system is recognized dynamically
+and the management interface is chosen accordingly.
+Where the ACP specification is more elaborate in its functionality than the
+WAC specification, only the resource-specific management of identity-based
+access control is supported. managing resources on a WAC-based Solid Server
+implementation, group identities and recursive authorization management is supported.</p>
 
         <!-- Should we mention Inrupt here? -->
         <!-- leveraging the [Inrupt authentication library](todo: footnote) to implement permission management, -->
@@ -200,45 +199,38 @@ can be enabled.</p>
 
 For modifying access permissions, BashLib currently supports the Universal API provided by Inrupt’s tooling. While this does not yet encompass the full range of functionality available for managing Access Control Resources (ACRs), it provides a streamlined way to handle common authorization tasks. This allows users to interact with Solid’s access control models without needing to manually configure complex permission structures. -->
 
-        <p>By simplifying authorization management fpr command-line workflows requiring data sharing, 
-and the ability to integrate these systems into command line flows such as cron jobs <a href="todo: footnote / cite?"></a>, 
-BashLib lowers the integration barrier for automated data sharing in the Solid ecosystem.</p>
+        <p>Simplifying the authorization management to resource-based authentication management
+command-line workflows can integrate all Solid compatible systems into their flows,
+and provide authorization management based on external systems such as cron jobs.</p>
 
-        <p>For our example, Ben has two authorization requirements.
-The work in progress version of the publication needs to be
-shared with his colleagues Pieter and Ruben, where the 
-final version can be published to be publicly readable.
-First, Ben creates a public Solid container, in which the 
-resulting publication will be published, as shown in <a href="#public-auth-listing">Listing 2</a>.
-Next, Ben creates a private Solid container, that is only
-shared with his colleagues to store in-progress work
-as shown in <a href="#private-auth-listing">Listing 3</a>.</p>
+        <p>Continuing the example, Ben needs both a public location to 
+publish completed presentations and a private location 
+where work in progress can be shared with colleagues.
+To achieve this, Ben creates a public Solid container
+in which the final publications are published, 
+and a private Solid container to store in-progress work
+to be shared with their colleagues Pieter and Ruben as shown in <a href="#auth-listing">Listing 2</a>.</p>
 
-        <figure id="public-auth-listing" class="listing">
-<pre style="font-size: 14px"><code>npx bashlib-solid mkdir base:/public/presentations/
+        <figure id="auth-listing" class="listing">
+<pre style="font-size: 14px"><code># Initializing the public workspace
+npx bashlib-solid mkdir base:/public/presentations/
 npx bashlib-solid access set --default 
     base:/public/presentations/ p=[r]
-</code></pre>
-<figcaption>
-            <p><span class="label">Listing 2:</span> The researcher creates a public presentations container located at https://ben.myPodProvider.org/public/presentations/.
-Read permissions are set to be public for the created container and its contents recursively.
-For pods using the ACP authorization mechanism, the –default flag cannot be used and
-resource permissions have to be set individually.</p>
-          </figcaption>
-</figure>
 
-        <figure id="private-auth-listing" class="listing">
-<pre style="font-size: 14px"><code>npx bashlib-solid mkdir base:/private/presentations/
+# Intializing the private workspace
+npx bashlib-solid mkdir base:/private/presentations/
 npx bashlib-solid access set --default 
     base:/private/presentations/ https://pieter.myPodProvider.org/profile/card#me=r
 npx bashlib-solid access set --default 
     base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=r
 </code></pre>
 <figcaption>
-            <p><span class="label">Listing 3:</span> The researcher creates a private presentations container at https://ben.myPodProvider.org/private/presentations/
-and gives read permissions to his colleagues Pieter and Ruben for the recursive container.
-For pods using the <code>ACP</code> authorization mechanism, the –default flag cannot be used and
-resource permissions have to be set individually.</p>
+            <p><span class="label">Listing 2:</span> The researcher creates a public presentations container located at https://ben.myPodProvider.org/public/presentations/
+where public read permissions are set (p=r).
+Next a private container is created at https://ben.myPodProvider.org/private/presentations/
+where only the colleagues are given read access (<id>=r).
+The &#8211;default flag sets up recursive permissions for all child resources in WAC-based Solid Servers.
+When using ACP-based Solid pods, individual resource permissions have to be assigned in Bashlib.</id></p>
           </figcaption>
 </figure>
       </div>
@@ -246,17 +238,16 @@ resource permissions have to be set individually.</p>
 
   <section id="suite" inlist="" rel="schema:hasPart" resource="#suite">
 <div datatype="rdf:HTML" property="schema:description">
-        <h2 property="schema:name">Tooling Suite</h2>
+        <h2 property="schema:name">Resource management</h2>
 
-        <p>The main part of the functionality provided by Bashlib is aimed at data management.
-This functionality is aimed at align commonly used command-line utilities to the
-Solid <a href="todo: cite">Linked Data Platform</a> specification used for data management
-in an authenticated session.</p>
+        <p>To support the resource management requirements of command-line based workflows,
+Bashlib integrates a set of prominent command-line utilities for resource management
+with the Solid resource interface.</p>
 
         <!-- Basic Shell Utilities -->
-        <p>A large section of the provided Bashlib functionality aligns with core shell utilities,
-making use of the authenticated session to authenticate the user in outgoing requests.
-The <code>curl</code> mimics its namesake’s functionality with added outgoing Authentication headers.
+        <p>Bashlib implements the following set of utility functions that align with their command-line 
+counterparts: 
+The <code>curl</code> utility uses the authenticated Solid session to add outgoing Authentication headers.
 The <code>ls</code> utility provides directory listings of the target Solid container.
 The <code>tree</code> utility provides a recursive tree listing starting from the targeted Solid container.
 The <code>cp</code> and <code>mv</code> utilities provide functionality to move and copy resources between both the 
@@ -264,12 +255,16 @@ local file system and Solid pods, automatically recognizing the source and targe
 as being local or URIs and managing the transfer of resources accordingly.
 The <code>touch</code>, <code>mkdir</code> and <code>rm</code> utilities provide functionality to create and remove resources and
 containers on a Solid pod.
-Finally, the <code>find</code> utility enables the searching of resources on a Solid pod based on their resource
-URI.</p>
+Finally, the <code>find</code> utility enables the searching of resources 
+on a Solid pod based on their resource URI.
+Note that in the above implemented set of utilities, 
+exact formatting of output may vary from their native counterparts
+and not all flags are implemented.</p>
 
         <p>Additionally, some Solid specific utility functions have been added.
 The <code>query</code> utility executes a SPARQL query either over the individual resources
-or the federated set of resources in the target Solid container.
+or the federated set of resources in the target Solid container. 
+Only RDF resources are taken into account here, ignoring the other resources.
 The <code>edit</code> utility is used to load an external resource in a local editor,
 and update the resulting resource when saved.</p>
 
@@ -279,13 +274,12 @@ that is required to integrate existing
 command line workflows into the Solid ecosystem.</p>
 
         <p>In our running example, having created the Solid containers
-for in-progress work <a href="#private-auth-listing">Listing 3</a> 
-and public presentations <a href="#public-auth-listing">Listing 2</a>,
+for in-progress work and public presentations in <a href="#auth-listing">Listing 2</a>,
 Ben now sets up the scripts to sync his work to
-the in-progress container <a href="#private-publishing">Listing 4</a>
+the in-progress container <a href="#private-publishing">Listing 3</a>
 that will be visible for Pieter and Ruben to read
-for feedback, and the sync script for the finihsed 
-presentation in <a href="#public-publishing">Listing 5</a>
+for feedback, and the sync script for the finished 
+presentation in <a href="#public-publishing">Listing 4</a>
 that makes the result public.</p>
 
         <figure id="private-publishing" class="listing">
@@ -295,7 +289,7 @@ that makes the result public.</p>
 npx bashlib-solid cp sosy-presentation/ base:/private/publication/
 </code></pre>
 <figcaption>
-            <p><span class="label">Listing 4:</span> The researcher publishes the presentation directory to their private publications container on their Solid pod.</p>
+            <p><span class="label">Listing 3:</span> The researcher publishes the presentation directory to their private publications container on their Solid pod.</p>
           </figcaption>
 </figure>
 
@@ -306,7 +300,7 @@ npx bashlib-solid cp sosy-presentation/ base:/private/publication/
 npx bashlib-solid cp sosy-presentation/ base:/public/publication/
 </code></pre>
 <figcaption>
-            <p><span class="label">Listing 5:</span> The researcher publishes the presentation directory to their public publications container on their Solid pod.</p>
+            <p><span class="label">Listing 4:</span> The researcher publishes the presentation directory to their public publications container on their Solid pod.</p>
           </figcaption>
 </figure>
       </div>
@@ -319,17 +313,18 @@ npx bashlib-solid cp sosy-presentation/ base:/public/publication/
         <!-- * Bashlib provides the necessary functionality to integrate Solid in CLI workflows. -->
         <!-- * Bashlib can perform automated background tasks for multiple profiles. -->
 
-        <p>BashLib provides the required functionality to integrate (existing) CLI workflows into the Solid ecosystem, 
-providing a simple interface for authentication, authorization, and data management. 
-Supporting both the spec-complient interactive authentication flow and 
-the implementation-specific background authentication flows, 
-in combination with management of multiple authentiated sessions,
-Bashlib can be used to integrate any combination of professional 
-and personal workflows interchangeably.</p>
+        <p>BashLib provides a base set of utilities to help integrate command-line
+workflows in the Solid ecosystem, providing a simple interface for authentication 
+and authorization management and mapping commonly used utilities for data management. 
+Supporting both the specification compliant authentication flow and
+the Solid-server specific authentication-token based flow, 
+Bashlib aims to be both future-proof and provide support for automated background workflows.
+Similarly the support for both authorization systems aims to allow integration throughout
+the full Solid ecosystem.</p>
 
-        <p>By bridging the gap between the Solid ecosystem and CLI-based automation, 
-BashLib lowers the entry barrier for developers and system administrators
-to integrate Solid in new and existing workflows.</p>
+        <p>Bridging the gap between command-line workflows and the Solid ecosystem, 
+BashLib lowers the barrier to entry for developers and systems administrators
+to integrate both new and existing workflows for data management into the Solid ecosystem.</p>
 
       </div>
 </section>
@@ -345,6 +340,10 @@ to integrate Solid in new and existing workflows.</p>
   <dd resource="#van2024community" typeof="schema:Article">Van Herwegen, J., Verborgh, R.: The Community Solid Server: Supporting research &amp; development in an evolving ecosystem. Semantic Web. 15, 2597–2611 (2024).</dd>
   <dt id="ref-3">[3]</dt>
   <dd resource="https://www.inrupt.com/products/enterprise-solid-server" typeof="schema:CreativeWork">Enterprise Server Software From Inrupt. <a href="https://www.inrupt.com/products/enterprise-solid-server">https:/​/​www.inrupt.com/products/enterprise-solid-server</a></dd>
+  <dt id="ref-4">[4]</dt>
+  <dd resource="https://solidproject.org/TR/wac" typeof="schema:CreativeWork">Web Access Control. <a href="https://solidproject.org/TR/wac">https:/​/​solidproject.org/TR/wac</a></dd>
+  <dt id="ref-5">[5]</dt>
+  <dd resource="https://solidproject.org/TR/acp" typeof="schema:CreativeWork">Access Control Policy (ACP). <a href="https://solidproject.org/TR/acp">https:/​/​solidproject.org/TR/acp</a></dd>
 </dl>
 </section>
 </footer>
