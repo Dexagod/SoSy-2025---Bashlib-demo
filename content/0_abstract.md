@@ -26,7 +26,6 @@ a cloud-like fashion, as well as for automated data sharing
 between parties based on the Solid authentication and authorization stack.
 <!-- Perspectives -->
 <!-- ## No perspectives ## -->
-
 Integrating Solid in workflows requires intensive knowledge of libraries and programming languages.
 Where BASH allows for straightforward integration in existing workflows, Solid has little tooling to support this.
 Authentication flows exceed the
