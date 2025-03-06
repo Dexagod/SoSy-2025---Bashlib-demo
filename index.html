@@ -85,7 +85,7 @@ with control over their data and providing data interoperability in the Web ecos
 By focussing support on the Web application ecosystem, workflows that do not use the 
 browser ecosystem for data management and exchange are restricted in their options to integrate
 with the Solid ecosystem.
-Where the command line ecosystem is a rich ecosystem of workflows that orchestrate 
+As the command line ecosystem is a rich ecosystem of workflows that orchestrate 
 data management, sharing, and integration, both for private and professional workflows,
 providing integration options for the Solid protocol can enable straightforward
 mapping of these existing command line workflows to the Solid ecosystem.</p>
@@ -99,11 +99,13 @@ By bridging the gap between Solid and the command line,
 BashLib aims to facilitate broader adoption 
 of the Solid ecosystem in non-Web workflows.</p>
 
-        <p>To set an example, we take the case of a researcher who is making a presentation
-for an upcoming conference. We will look at how Bashlib supports the flow of 
-a researcher named Ben, who wants to integrate their workflow of getting feedback
-from colleagues on a presentation in development and publishing the resulting 
-presentation, using their Solid pod.</p>
+        <p>Setting an example use-case, we have the case of a researcher making a presentation
+for an upcoming conference. We look at how Bashlib can support our researcher Ben 
+to integrate their workflow pf receiving feedback from colleagues on a presentation 
+in development and the public publishing the resulting presentation using their Solid pod.</p>
+
+        <p>The full tutorial of Bashlib can be found on the <a href="https://solidlabresearch.github.io/Bashlib/tutorial/">website</a><sup id="fnref:tutorial"><a href="#fn:tutorial" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>.</p>
+
       </div>
 </section>
 
@@ -116,38 +118,41 @@ presentation, using their Solid pod.</p>
         <!-- * Bashlib supports hot-swapping authentication sessions on the fly to quickly swap between professional and personal identities. -->
         <!-- * As interactive authentication flows are essential for back-end tasks, we support the latest client credentials implementations from both the CSS and ESS implementations. -->
 
-        <p>Authentication is a fundamental component of the Solid protocol, serving as the foundation for its privacy mechanisms.
-The Solid access control systems that allow users to manage their Solid pods and share data with actors in the network
-is based on the identity of the user and the actors with whom data is being shared. 
-To design capabilities for Solid authentication management on the CLI needs to take into account the following requirements:</p>
+        <p>Authentication is a fundamental component of the Solid protocol, 
+serving as the foundation for its privacy and data sharing mechanism.
+As different workflows impose different constraints on the management
+of user identity and authentication, Bashlib supports the following authentication capabilities:</p>
 
-        <p>(i) Bashlib supports the OpenID Connect defined in the Solid specification <a href="">todo: cite? or footnote</a>
-to authenticate users through an interactive browser logion flow. 
-This opens up an identical interface as when authenticating a Solid session 
-using Web applications. Where this flow is compatible with all Solid Server 
-implementations, the interactive nature of the authentication flow makes 
-it jarring for most CLI integrations.</p>
+        <p>(i) Compatibility with the <a href="todo: spec link">Solid OpenID Connect</a><a href="todo: citation link"></a> 
+speficiation is integrated in Bashlib, proving an interactive authentication flow via the browser.
+As this is the standardized login flow, it is compatible with all Solid Server implementations, 
+but it comes with a downside of requiring user interaction to authenticate
+which can make it undesirable in automated command-line workflows.</p>
 
-        <p>(ii) Building authentication systems for multiple identities is a core requirement for many workflows. 
-Bashlib internally caches any authenticated sessions, 
-making it possible to quickly swap between sessions in workflows.
-This feature is particularly useful for professionals managing both personal 
-and enterprise-level Solid interactions, allowing for smooth transitions between identities.</p>
+        <p>(ii) Alternatively, support is added for the token-based authentication flows that are 
+provided by both the Community Solid Server (CSS) <span class="references">[<a href="#ref-2">2</a>]</span><sup id="fnref:CSS"><a href="#fn:CSS" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>
+and the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.inrupt.com/products/enterprise-solid-server">Enterprise Solid Server (ESS)</a> <span class="references">[<a href="#ref-3">3</a>]</span><sup id="fnref:ESS"><a href="#fn:ESS" class="footnote" rel="footnote" role="doc-noteref">3</a></sup> implementations of the Solid Server.
+The token-based authentication flow does not require any user interaction after
+generating the client token, enabling the integration of Solid in automated background
+workflows and preventing login fatigue for frequently used actions.
+Care must be taken when using this authentication flow however,
+as the lack of standardization means there is no guarantee in compliance 
+with other server implementations or even future 
+versions of the CSS and ESS implementations.</p>
 
-        <p>(iii) Where Bashlib supports the interactive OpenID Connect login flow in the browser,
-this is not usable for automated systems that need to synchronize, manage and exchange 
-data via the Solid protocol. For this reason, both the Community Solid Server <span class="references">[<a href="#ref-2">2</a>]</span><sup id="fnref:CSS"><a href="#fn:CSS" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>
-and the <a href="">Enterprise Solid Server</a><sup id="fnref:ESS"><a href="#fn:ESS" class="footnote" rel="footnote" role="doc-noteref">2</a></sup> implementations of the Solid Server provide support for a Client Credentials flow,
-that enable authenticated sessions to be dynamically setup in the background without user interaction.
-By integrating these credential-based authentication methods, 
-BashLib enables backend services to securely access Solid resources without manual intervention, 
-expanding the potential for Solid adoption in automated and infrastructure-level applications.</p>
+        <p>(iii) Support is provided for switching authenticated sessions.
+As different workflows may have different identity requirements, as is often the case
+when combining professional and personal data management tasks, 
+authentication systems need to take this into account.
+Bashlib performs internal caching of authenticated sessions and provides support
+for passing an identity parameter to any call, or opening an interactive
+form to swap out the active session identity.</p>
 
-        <p>Going back to the example, our researcher Ben is hosting their own Solid pod 
-on a Community Solid Server instance<span class="references">[<a href="#ref-2">2</a>]</span>.
-To setup bashlib to work without needing user interaction, Ben sets up
-a credential flow for Bashlib to enable the automated creation of 
-authenticated sessions where needed. For this, Ben executes the code
+        <p>Returning to the example, researcher Ben has their Solid Pod hosted
+on a CSS instance.
+To setup bashlib to work without needing user interaction, 
+Ben sets up the token-based authentication flow to prevent interruptions
+from authentication popups during work. For this, Ben executes the code
 in <a href="#authentication-listing">Listing 1</a> and provides their email and password
 information via the interactive command line form.</p>
 
@@ -159,6 +164,7 @@ information via the interactive command line form.</p>
             <p><span class="label">Listing 1:</span> The researcher creates a credential token to setup automated authentication for their workflows. Email and password info is provided in the interactive cli form.</p>
           </figcaption>
 </figure>
+
       </div>
 </section>
 
@@ -224,9 +230,9 @@ resource permissions have to be set individually.</p>
         <figure id="private-auth-listing" class="listing">
 <pre style="font-size: 14px"><code>npx bashlib-solid mkdir base:/private/presentations/
 npx bashlib-solid access set --default 
-    base:/private/presentations/ https://pieter.myPodProvider.org/profile/card#me=[r]
+    base:/private/presentations/ https://pieter.myPodProvider.org/profile/card#me=r
 npx bashlib-solid access set --default 
-    base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=[r]
+    base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=r
 </code></pre>
 <figcaption>
             <p><span class="label">Listing 3:</span> The researcher creates a private presentations container at https://ben.myPodProvider.org/private/presentations/
@@ -324,6 +330,7 @@ and personal workflows interchangeably.</p>
         <p>By bridging the gap between the Solid ecosystem and CLI-based automation, 
 BashLib lowers the entry barrier for developers and system administrators
 to integrate Solid in new and existing workflows.</p>
+
       </div>
 </section>
 
@@ -336,6 +343,8 @@ to integrate Solid in new and existing workflows.</p>
   <dd resource="https://www.semanticscholar.org/paper/Solid-%3A-A-Platform-for-Decentralized-Social-Based-Sambra-Mansour/5ac93548fd0628f7ff8ff65b5878d04c79c513c4" typeof="schema:Article">Sambra, A., Mansour, E., Hawke, S., Zereba, M., Greco, N., Ghanem, A., Zagidulin, D., Aboulnaga, A., Berners-Lee, T.: Solid : A Platform for Decentralized Social Applications Based on Linked Data. Presented at the (2016).</dd>
   <dt id="ref-2">[2]</dt>
   <dd resource="#van2024community" typeof="schema:Article">Van Herwegen, J., Verborgh, R.: The Community Solid Server: Supporting research &amp; development in an evolving ecosystem. Semantic Web. 15, 2597–2611 (2024).</dd>
+  <dt id="ref-3">[3]</dt>
+  <dd resource="https://www.inrupt.com/products/enterprise-solid-server" typeof="schema:CreativeWork">Enterprise Server Software From Inrupt. <a href="https://www.inrupt.com/products/enterprise-solid-server">https:/​/​www.inrupt.com/products/enterprise-solid-server</a></dd>
 </dl>
 </section>
 </footer>
@@ -346,6 +355,9 @@ to integrate Solid in new and existing workflows.</p>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
+    <li id="fn:tutorial">
+      <p><a href="https://solidlabresearch.github.io/Bashlib/tutorial/">https:/​/​solidlabresearch.github.io/Bashlib/tutorial/</a> <a href="#fnref:tutorial" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
     <li id="fn:CSS">
       <p>The <a href="[cite:cites van2024community](https://communitysolidserver.github.io/CommunitySolidServer/latest/)">Community Solid Server</a> is a research project developed by the <a href="https://knows.idlab.ugent.be/">KNoWS team</a> at Ghent University. <a href="#fnref:CSS" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
