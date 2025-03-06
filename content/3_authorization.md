@@ -61,9 +61,9 @@ resource permissions have to be set individually.
 <figure id="private-auth-listing" class="listing">
 <pre style="font-size: 14px"><code>npx bashlib-solid mkdir base:/private/presentations/
 npx bashlib-solid access set --default 
-    base:/private/presentations/ https://pieter.myPodProvider.org/profile/card#me=[r]
+    base:/private/presentations/ https://pieter.myPodProvider.org/profile/card#me=r
 npx bashlib-solid access set --default 
-    base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=[r]
+    base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=r
 </code></pre>
 <figcaption markdown="block">
 The researcher creates a private presentations container at https://ben.myPodProvider.org/private/presentations/
