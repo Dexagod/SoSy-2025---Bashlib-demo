@@ -33,6 +33,24 @@ By integrating these credential-based authentication methods,
 BashLib enables backend services to securely access Solid resources without manual intervention, 
 expanding the potential for Solid adoption in automated and infrastructure-level applications.
 
-
 [^CSS]: The [Community Solid Server]([cite:cites van2024community](https://communitysolidserver.github.io/CommunitySolidServer/latest/)) is a research project developed by the [KNoWS team](https://knows.idlab.ugent.be/) at Ghent University.
 [^ESS]: The [Enterprise Solid Server](https://www.inrupt.com/) is a Solid Server implementation by [Inrupt](https://www.inrupt.com/).
+
+
+Going back to the example, our researcher Ben is hosting their own Solid pod 
+on a Community Solid Server instance[](cite:cites van2024community).
+To setup bashlib to work without needing user interaction, Ben sets up
+a credential flow for Bashlib to enable the automated creation of 
+authenticated sessions where needed. For this, Ben executes the code
+in [](#authentication-listing) and provides their email and password
+information via the interactive command line form.
+
+
+<figure id="authentication-listing" class="listing">
+<pre style="font-size: 14px"><code>npx bashlib-solid auth create-token-css 
+    --webid https://bob.myPodProvider.org/profile/card#me
+</code></pre>
+<figcaption markdown="block">
+The researcher creates a credential token to setup automated authentication for their workflows. Email and password info is provided in the interactive cli form.
+</figcaption>
+</figure>

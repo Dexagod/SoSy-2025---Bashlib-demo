@@ -26,7 +26,42 @@ or the federated set of resources in the target Solid container.
 The `edit` utility is used to load an external resource in a local editor,
 and update the resulting resource when saved.
 
+Providing the above set of CLI utilities,
+Bashlib provides a base set of functionality 
+that is required to integrate existing 
+command line workflows into the Solid ecosystem.
 
-By providing the set of CLI utilities defined above,
-Bashlib provides a base set of functionality to integrate
-CLI workflows with the Solid ecosystem.
+
+In our running example, having created the Solid containers
+for in-progress work [](#private-auth-listing) 
+and public presentations [](#public-auth-listing),
+Ben now sets up the scripts to sync his work to
+the in-progress container [](#private-publishing)
+that will be visible for Pieter and Ruben to read
+for feedback, and the sync script for the finihsed 
+presentation in [](#public-publishing)
+that makes the result public.
+
+
+<figure id="private-publishing" class="listing">
+<pre style="font-size: 14px"><code>
+> publish-private.sh
+#!/bin/bash
+npx bashlib-solid cp sosy-presentation/ base:/private/publication/
+</code></pre>
+<figcaption markdown="block">
+The researcher publishes the presentation directory to their private publications container on their Solid pod.
+</figcaption>
+</figure>
+
+
+<figure id="public-publishing" class="listing">
+<pre style="font-size: 14px"><code>
+> publish-public.sh
+#!/bin/bash
+npx bashlib-solid cp sosy-presentation/ base:/public/publication/
+</code></pre>
+<figcaption markdown="block">
+The researcher publishes the presentation directory to their public publications container on their Solid pod.
+</figcaption>
+</figure>

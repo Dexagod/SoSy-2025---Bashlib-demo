@@ -5,7 +5,6 @@
 <!-- * The AC mechanism is discovered on the fly -->
 <!-- * For managing Access Control Resources, we do not support the full suite of functionality yet, only the Universal API by INRUPT tooling. -->
 
-
 The Solid authorization mechanism determines how access to data is granted and managed, 
 ensuring that users and applications interact with resources according to predefined permissions. 
 Solid currently supports two distinct authorization specifications: 
@@ -33,3 +32,43 @@ For modifying access permissions, BashLib currently supports the Universal API p
 By simplifying authorization management fpr command-line workflows requiring data sharing, 
 and the ability to integrate these systems into command line flows such as cron jobs [](todo: footnote / cite?), 
 BashLib lowers the integration barrier for automated data sharing in the Solid ecosystem.
+
+
+For our example, Ben has two authorization requirements.
+The work in progress version of the publication needs to be
+shared with his colleagues Pieter and Ruben, where the 
+final version can be published to be publicly readable.
+First, Ben creates a public Solid container, in which the 
+resulting publication will be published, as shown in [](#public-auth-listing).
+Next, Ben creates a private Solid container, that is only
+shared with his colleagues to store in-progress work
+as shown in [](#private-auth-listing).
+
+
+<figure id="public-auth-listing" class="listing">
+<pre style="font-size: 14px"><code>npx bashlib-solid mkdir base:/public/presentations/
+npx bashlib-solid access set --default 
+    base:/public/presentations/ p=[r]
+</code></pre>
+<figcaption markdown="block">
+The researcher creates a public presentations container located at https://ben.myPodProvider.org/public/presentations/.
+Read permissions are set to be public for the created container and its contents recursively.
+For pods using the ACP authorization mechanism, the --default flag cannot be used and
+resource permissions have to be set individually.
+</figcaption>
+</figure>
+
+<figure id="private-auth-listing" class="listing">
+<pre style="font-size: 14px"><code>npx bashlib-solid mkdir base:/private/presentations/
+npx bashlib-solid access set --default 
+    base:/private/presentations/ https://pieter.myPodProvider.org/profile/card#me=[r]
+npx bashlib-solid access set --default 
+    base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=[r]
+</code></pre>
+<figcaption markdown="block">
+The researcher creates a private presentations container at https://ben.myPodProvider.org/private/presentations/
+and gives read permissions to his colleagues Pieter and Ruben for the recursive container.
+For pods using the `ACP` authorization mechanism, the --default flag cannot be used and
+resource permissions have to be set individually.
+</figcaption>
+</figure>

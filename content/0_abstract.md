@@ -1,6 +1,6 @@
 ## Abstract
 <!-- Context      -->
-The current integration of Solid is to this day often restricted to
+The integration of Solid is to this day often restricted to
 programming-heavy integrations into Web applications.
 <!-- Need         -->
 Where existing process flows often use the command line for data 
