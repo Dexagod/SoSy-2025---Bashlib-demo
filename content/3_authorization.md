@@ -5,23 +5,22 @@
 <!-- * The AC mechanism is discovered on the fly -->
 <!-- * For managing Access Control Resources, we do not support the full suite of functionality yet, only the Universal API by INRUPT tooling. -->
 
-The Solid authorization mechanism determines how access to data is granted and managed, 
-ensuring that users and applications interact with resources according to predefined permissions. 
-Solid currently supports two distinct authorization specifications: 
-The [Access Control Lists (ACLs)](todo: cite / footnote) specification and 
-the [Access Control Policies (ACP)](todo: cite / footnote) specification. 
-The coexistence of these two specification in the Solid ecosystem adds complexity
-to streamline permission management for Solid workflows, 
-requiring seamless support for both authorization mechanisms.
+The Solid authorization mechanism determines how resource access is granted and managed.
+The current Solid ecosystem supports two distinct authorization systems: 
+The [Web Access Control (WAC)](cite:cites WAC) specification and 
+the [Access Control Policy (ACP)](cite:cites ACP) specification. 
+The coexistence of these two specification in the Solid ecosystem 
+adds complexity in having to support seamless integration between
+these competing authorization standards.
 
-To address this, BashLib integrates support for both authorization specifications, 
-based on automated discovery of the used mechanism and adapting the used permission API
-on the fly.
-However, as the ACP specification diverges far from the WAC specification, 
-permission management is restricted to the resource level when automating 
-discovery of the authorization method used by the Solid Server interacted with.
-When prior knowledge of the use of WAC is known, recursive permission management
-can be enabled.
+Bashlib integrates the core functionality of both authorization mechanisms 
+in their management of individual resources based on the identity of the
+requesting party. The used authorization system is recognized dynamically
+and the management interface is chosen accordingly.
+Where the ACP specification is more elaborate in its functionality than the
+WAC specification, only the resource-specific management of identity-based
+access control is supported. managing resources on a WAC-based Solid Server
+implementation, group identities and recursive authorization management is supported.
 
 <!-- Should we mention Inrupt here? -->
 <!-- leveraging the [Inrupt authentication library](todo: footnote) to implement permission management, -->
@@ -29,46 +28,37 @@ can be enabled.
 
 For modifying access permissions, BashLib currently supports the Universal API provided by Inrupt’s tooling. While this does not yet encompass the full range of functionality available for managing Access Control Resources (ACRs), it provides a streamlined way to handle common authorization tasks. This allows users to interact with Solid’s access control models without needing to manually configure complex permission structures. -->
 
-By simplifying authorization management fpr command-line workflows requiring data sharing, 
-and the ability to integrate these systems into command line flows such as cron jobs [](todo: footnote / cite?), 
-BashLib lowers the integration barrier for automated data sharing in the Solid ecosystem.
+Simplifying the authorization management to resource-based authentication management
+command-line workflows can integrate all Solid compatible systems into their flows,
+and provide authorization management based on external systems such as cron jobs.
 
+Continuing the example, Ben needs both a public location to 
+publish completed presentations and a private location 
+where work in progress can be shared with colleagues.
+To achieve this, Ben creates a public Solid container
+in which the final publications are published, 
+and a private Solid container to store in-progress work
+to be shared with their colleagues Pieter and Ruben as shown in [](#auth-listing).
 
-For our example, Ben has two authorization requirements.
-The work in progress version of the publication needs to be
-shared with his colleagues Pieter and Ruben, where the 
-final version can be published to be publicly readable.
-First, Ben creates a public Solid container, in which the 
-resulting publication will be published, as shown in [](#public-auth-listing).
-Next, Ben creates a private Solid container, that is only
-shared with his colleagues to store in-progress work
-as shown in [](#private-auth-listing).
-
-
-<figure id="public-auth-listing" class="listing">
-<pre style="font-size: 14px"><code>npx bashlib-solid mkdir base:/public/presentations/
+<figure id="auth-listing" class="listing">
+<pre style="font-size: 14px"><code># Initializing the public workspace
+npx bashlib-solid mkdir base:/public/presentations/
 npx bashlib-solid access set --default 
     base:/public/presentations/ p=[r]
-</code></pre>
-<figcaption markdown="block">
-The researcher creates a public presentations container located at https://ben.myPodProvider.org/public/presentations/.
-Read permissions are set to be public for the created container and its contents recursively.
-For pods using the ACP authorization mechanism, the --default flag cannot be used and
-resource permissions have to be set individually.
-</figcaption>
-</figure>
 
-<figure id="private-auth-listing" class="listing">
-<pre style="font-size: 14px"><code>npx bashlib-solid mkdir base:/private/presentations/
+# Intializing the private workspace
+npx bashlib-solid mkdir base:/private/presentations/
 npx bashlib-solid access set --default 
     base:/private/presentations/ https://pieter.myPodProvider.org/profile/card#me=r
 npx bashlib-solid access set --default 
     base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=r
 </code></pre>
 <figcaption markdown="block">
-The researcher creates a private presentations container at https://ben.myPodProvider.org/private/presentations/
-and gives read permissions to his colleagues Pieter and Ruben for the recursive container.
-For pods using the `ACP` authorization mechanism, the --default flag cannot be used and
-resource permissions have to be set individually.
+The researcher creates a public presentations container located at https://ben.myPodProvider.org/public/presentations/
+where public read permissions are set (p=r).
+Next a private container is created at https://ben.myPodProvider.org/private/presentations/
+where only the colleagues are given read access (<id>=r).
+The --default flag sets up recursive permissions for all child resources in WAC-based Solid Servers.
+When using ACP-based Solid pods, individual resource permissions have to be assigned in Bashlib.
 </figcaption>
 </figure>

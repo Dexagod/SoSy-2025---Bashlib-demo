@@ -4,14 +4,15 @@
 <!-- * Bashlib provides the necessary functionality to integrate Solid in CLI workflows. -->
 <!-- * Bashlib can perform automated background tasks for multiple profiles. -->
 
-BashLib provides the required functionality to integrate (existing) CLI workflows into the Solid ecosystem, 
-providing a simple interface for authentication, authorization, and data management. 
-Supporting both the spec-complient interactive authentication flow and 
-the implementation-specific background authentication flows, 
-in combination with management of multiple authentiated sessions,
-Bashlib can be used to integrate any combination of professional 
-and personal workflows interchangeably.
+BashLib provides a base set of utilities to help integrate command-line
+workflows in the Solid ecosystem, providing a simple interface for authentication 
+and authorization management and mapping commonly used utilities for data management. 
+Supporting both the specification compliant authentication flow and
+the Solid-server specific authentication-token based flow, 
+Bashlib aims to be both future-proof and provide support for automated background workflows.
+Similarly the support for both authorization systems aims to allow integration throughout
+the full Solid ecosystem.
 
-By bridging the gap between the Solid ecosystem and CLI-based automation, 
-BashLib lowers the entry barrier for developers and system administrators
-to integrate Solid in new and existing workflows.
+Bridging the gap between command-line workflows and the Solid ecosystem, 
+BashLib lowers the barrier to entry for developers and systems administrators
+to integrate both new and existing workflows for data management into the Solid ecosystem.
