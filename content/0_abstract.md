@@ -1,33 +1,27 @@
 ## Abstract
 <!-- Context      -->
-The integration of Solid is to this day often restricted to
-programming-heavy integrations into Web applications.
+Integration of the Solid protocol is restrictive to 
+Web-based applications in much of its tooling support.
 <!-- Need         -->
-Where existing process flows often use the command line for data 
-pipelining between processes, support for Solid integration in this
-ecosystem is lacking.
+Where existing professional and consumer workflows make heavy use
+of command line utilities to manage and exchange data as resources, 
+driving Solid integration in this ecosystem lacks tooling support.
 <!-- Task         -->
-To enable integration of Solid into such tooling, 
-we developed a CLI wrapper that provides functioanlity
-for interactions between Solid Pods and the local file system.
+For this, we developed Bashlib as a wrapper around
+often used command line utilities while providing support
+for Solid authentication and authorization functionality.
 <!-- Object       -->
-The Bashlib program provides a CLI wrapper around
-authentication, authorization and resource management
-functionality for Solid. 
-By caching sessions for multiple profiles, it can 
-swap authentication on the fly to support mutliple 
-profiles for different workflows.   
+Through support for multiple authentication flows and
+switching sessions on the fly, support for the two
+authorization standards, resource management utilities
+and solid specific functionality such as querying, 
+Bashlib provides a well-rounded basis for integrating
+existing workflows with Solid through minimal effort.
 <!-- Findings     -->
 <!-- ## No findings ## -->
 <!-- Conclusion   -->
-Supporting Solid functionality in the command line opens up many
-workflows to cheap integration, both for managing local data in
-a cloud-like fashion, as well as for automated data sharing 
-between parties based on the Solid authentication and authorization stack.
+By providing command line integration with the Solid ecosystem,
+Bashlib opens up adoption pathways for existing data flows to
+expand data sharing in decentralized ecosystems.
 <!-- Perspectives -->
 <!-- ## No perspectives ## -->
-Integrating Solid in workflows requires intensive knowledge of libraries and programming languages.
-Where BASH allows for straightforward integration in existing workflows, Solid has little tooling to support this.
-Authentication flows exceed the
-We present BashLib as a Solid authentication wrapper for common BASH functionality and Solid-specific additions
-Goal to enable CLI flows to integrate Solid in their workflow
