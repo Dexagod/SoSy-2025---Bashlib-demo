@@ -1,27 +1,21 @@
 ## Abstract
 <!-- Context      -->
-Integration of the Solid protocol is restrictive to 
-Web-based applications in much of its tooling support.
+The tooling around the Solid protocol for realizing personal data vaults is mainly focused on Web-based applications.
 <!-- Need         -->
-Where existing professional and consumer workflows make heavy use
-of command-line utilities to manage and exchange data as resources, 
-driving Solid integration in this ecosystem lacks tooling support.
+Nevertheless, system administrators may prefer command-line workflows to manage and exchange data in such a vault, for which tooling currently is lacking.
 <!-- Task         -->
-For this, we developed Bashlib as a wrapper around
-often used command-line utilities while providing support
+We developed a command-line tool called Bashlib as a wrapper around
+common command-line commands, while adding support
 for Solid authentication and authorization functionality.
 <!-- Object       -->
-Through support for multiple authentication flows and
-switching sessions on the fly, support for the two
-authorization standards, resource management utilities
-and solid specific functionality such as querying, 
-Bashlib provides a well-rounded basis for integrating
-existing workflows with Solid through minimal effort.
+It supports multiple authentication flows, supports
+switching sessions, supports the two
+authorization standards WAC and ACP, has resource management utilities
+and offers solid specific functionality such as querying.
 <!-- Findings     -->
 <!-- ## No findings ## -->
 <!-- Conclusion   -->
-By providing command-line integration with the Solid ecosystem,
-Bashlib opens up adoption pathways for existing data flows to
-expand data sharing in decentralized ecosystems.
+This way, Bashlib opens up adoption pathways for existing data flows to
+expand data sharing in the Solid ecosystem.
 <!-- Perspectives -->
 <!-- ## No perspectives ## -->
