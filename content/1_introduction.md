@@ -20,15 +20,16 @@ mapping of these existing command line workflows to the Solid ecosystem.
 To address this lack of tooling, we introduce BashLib as a Solid compatibility wrapper
 for the command line. It provides commonly used command line utilities for resource management 
 and integrates them with Solid functionality for authentication, authorization, and managing 
-resource sharing on the Web. Additional solid specific functionality such as evaluating
+resource sharing on the Web. Additional Solid specific functionality such as evaluating
 SPARQL queries over remote resources and local editing of remote resources are also included.
 By bridging the gap between Solid and the command line, 
 BashLib aims to facilitate broader adoption 
 of the Solid ecosystem in non-Web workflows.
+% PC: I don’t understand how SPARQL quering is Solid specific functionality? Do you mean Linked Data specific?
 
 Setting an example use-case, we have the case of a researcher making a presentation
 for an upcoming conference. We look at how Bashlib can support our researcher Ben 
-to integrate their workflow pf receiving feedback from colleagues on a presentation 
+to integrate their workflow of receiving feedback from colleagues on a presentation 
 in development and the public publishing the resulting presentation using their Solid pod.
 
 The full tutorial of Bashlib can be found on the [website](https://solidlabresearch.github.io/Bashlib/tutorial/)[^tutorial].
