@@ -46,24 +46,22 @@ that makes the result public.
 
 
 <figure id="private-publishing" class="listing">
-<pre style="font-size: 14px"><code>
-> publish-private.sh
+<pre style="font-size: 14px"><code>> publish-private.sh
 #!/bin/bash
 npx bashlib-solid cp sosy-presentation/ base:/private/publication/
 </code></pre>
 <figcaption markdown="block">
-The researcher publishes the presentation directory to their private publications container on their Solid pod.
+Publish work in progress in the restricted access container on the user Solid pod.
 </figcaption>
 </figure>
 
 
 <figure id="public-publishing" class="listing">
-<pre style="font-size: 14px"><code>
-> publish-public.sh
+<pre style="font-size: 14px"><code>> publish-public.sh
 #!/bin/bash
 npx bashlib-solid cp sosy-presentation/ base:/public/publication/
 </code></pre>
 <figcaption markdown="block">
-The researcher publishes the presentation directory to their public publications container on their Solid pod.
+Publish finished work in the public access container on the user Solid pod.
 </figcaption>
 </figure>

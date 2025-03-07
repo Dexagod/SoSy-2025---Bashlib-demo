@@ -55,12 +55,8 @@ npx bashlib-solid access set --default
     base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=r
 </code></pre>
 <figcaption markdown="block">
-The researcher creates a public presentations container located at https://ben.myPodProvider.org/public/presentations/
-where public read permissions are set (p=r).
-Next a private container is created at https://ben.myPodProvider.org/private/presentations/
-where only the colleagues are given read access (<id>=r).
-The --default flag sets up recursive permissions for all child resources in WAC-based Solid Servers.
-When using ACP-based Solid pods, individual resource permissions have to be assigned in Bashlib.
+A location for public presentations setting read permissions for the public (p=r) is created at https://ben.myPodProvider.org/public/presentations/.
+The private location created at https://ben.myPodProvider.org/private/presentations/ however only provides read access for Pieter and Ruben (\<id\>=r).
 </figcaption>
 </figure>
 
