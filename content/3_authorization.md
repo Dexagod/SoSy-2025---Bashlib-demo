@@ -5,14 +5,14 @@
 <!-- * The AC mechanism is discovered on the fly -->
 <!-- * For managing Access Control Resources, we do not support the full suite of functionality yet, only the Universal API by INRUPT tooling. -->
 
-<!-- TODO PC: don’t cite a spec: create a footnote instead. -->
 The Solid authorization mechanism determines how resource access is granted and managed.
 The current Solid ecosystem supports two distinct authorization systems: 
-The [Web Access Control (WAC)](cite:cites WAC) specification and 
-the [Access Control Policy (ACP)](cite:cites ACP) specification. 
+The [Web Access Control (WAC)](https://solidproject.org/TR/wac)[^ACP] specification and 
+the [Access Control Policy (ACP)](https://solidproject.org/TR/acp)[^WAC] specification. 
 The coexistence of these two specification in the Solid ecosystem 
 adds complexity in having to support seamless integration between
 these competing authorization standards.
+
 
 Bashlib integrates the core functionality of both authorization mechanisms 
 in their management of individual resources based on the identity of the
@@ -63,3 +63,9 @@ The --default flag sets up recursive permissions for all child resources in WAC-
 When using ACP-based Solid pods, individual resource permissions have to be assigned in Bashlib.
 </figcaption>
 </figure>
+
+
+
+[^WAC]: [https://solidproject.org/TR/wac](https://solidproject.org/TR/wac)
+[^ACP]: [https://solidproject.org/TR/acp](https://solidproject.org/TR/acp)
+
