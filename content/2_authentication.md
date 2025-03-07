@@ -11,6 +11,8 @@ serving as the foundation for its privacy and data sharing mechanism.
 As different workflows impose different constraints on the management
 of user identity and authentication, Bashlib supports the following authentication capabilities:
 
+%PC: Why not create an `<ol>` tag here?
+%PC: I Think for Solid-OIDC you’d better just do a footnote/href?
 (i) Compatibility with the [Solid OpenID Connect](todo: spec link)[](todo: citation link) 
 speficiation is integrated in Bashlib, proving an interactive authentication flow via the browser.
 As this is the standardized login flow, it is compatible with all Solid Server implementations, 
