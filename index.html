@@ -124,32 +124,36 @@ serving as the foundation for its privacy and data sharing mechanism.
 As different workflows impose different constraints on the management
 of user identity and authentication, Bashlib supports the following authentication capabilities:</p>
 
-        <p>%PC: Why not create an <code>&lt;ol&gt;</code> tag here?
-%PC: I Think for Solid-OIDC you’d better just do a footnote/href?
-(i) Compatibility with the <a href="todo: spec link">Solid OpenID Connect</a><a href="todo: citation link"></a> 
+        <ol>
+          <li>
+            <p>Compatibility with the <a href="https://solidproject.org/TR/oidc">Solid OpenID Connect</a><sup id="fnref:solid-oidc"><a href="#fn:solid-oidc" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>
 speficiation is integrated in Bashlib, proving an interactive authentication flow via the browser.
 As this is the standardized login flow, it is compatible with all Solid Server implementations, 
 but it comes with a downside of requiring user interaction to authenticate
 which can make it undesirable in automated command-line workflows.</p>
-
-        <p>(ii) Alternatively, support is added for the token-based authentication flows that are 
-provided by both the Community Solid Server (CSS) <span class="references">[<a href="#ref-3">3</a>]</span><sup id="fnref:CSS"><a href="#fn:CSS" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>
-and the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.inrupt.com/products/enterprise-solid-server">Enterprise Solid Server (ESS)</a> <span class="references">[<a href="#ref-4">4</a>]</span><sup id="fnref:ESS"><a href="#fn:ESS" class="footnote" rel="footnote" role="doc-noteref">3</a></sup> implementations of the Solid Server.
-The token-based authentication flow does not require any user interaction after
-generating the client token, enabling the integration of Solid in automated background
-workflows and preventing login fatigue for frequently used actions.
-Care must be taken when using this authentication flow however,
-as the lack of standardization means there is no guarantee in compliance 
-with other server implementations or even future 
-versions of the CSS and ESS implementations.</p>
-
-        <p>(iii) Support is provided for switching authenticated sessions.
+          </li>
+          <li>
+            <p>Alternatively, support is added for token-based authentication options that are 
+provided by both the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://communitysolidserver.github.io/CommunitySolidServer/latest/">Community Solid Server (CSS)</a> <span class="references">[<a href="#ref-3">3</a>]</span><sup id="fnref:CSS"><a href="#fn:CSS" class="footnote" rel="footnote" role="doc-noteref">3</a></sup>
+and the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.inrupt.com/products/enterprise-solid-server">Enterprise Solid Server (ESS)</a> <span class="references">[<a href="#ref-4">4</a>]</span><sup id="fnref:ESS"><a href="#fn:ESS" class="footnote" rel="footnote" role="doc-noteref">4</a></sup> implementations of the Solid Server.
+These token-based authentication options do not require any user interaction after
+generating the client token when setting up new authenticated sessions, 
+making them ideal for automated background workflows or commonly used routines.
+As these token-based authentication options are not standardized 
+and differ between implementations, they can break at any point
+and are advised only for server hosting does not update their
+underlying implementation or that is under user control.</p>
+          </li>
+          <li>
+            <p>Finally, support is provided for switching authenticated sessions.
 As different workflows may have different identity requirements, as is often the case
 when combining professional and personal data management tasks, 
 authentication systems need to take this into account.
 Bashlib performs internal caching of authenticated sessions and provides support
 for passing an identity parameter to any call, or opening an interactive
 form to swap out the active session identity.</p>
+          </li>
+        </ol>
 
         <p>Returning to the example, researcher Ben has their Solid Pod hosted
 on a CSS instance.
@@ -179,11 +183,10 @@ information via the interactive command line form.</p>
         <!-- * The AC mechanism is discovered on the fly -->
         <!-- * For managing Access Control Resources, we do not support the full suite of functionality yet, only the Universal API by INRUPT tooling. -->
 
-        <!-- TODO PC: don’t cite a spec: create a footnote instead. -->
         <p>The Solid authorization mechanism determines how resource access is granted and managed.
 The current Solid ecosystem supports two distinct authorization systems: 
-The <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solidproject.org/TR/wac">Web Access Control (WAC)</a> <span class="references">[<a href="#ref-5">5</a>]</span> specification and 
-the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solidproject.org/TR/acp">Access Control Policy (ACP)</a> <span class="references">[<a href="#ref-6">6</a>]</span> specification. 
+The <a href="https://solidproject.org/TR/wac">Web Access Control (WAC)</a><sup id="fnref:ACP"><a href="#fn:ACP" class="footnote" rel="footnote" role="doc-noteref">5</a></sup> specification and 
+the <a href="https://solidproject.org/TR/acp">Access Control Policy (ACP)</a><sup id="fnref:WAC"><a href="#fn:WAC" class="footnote" rel="footnote" role="doc-noteref">6</a></sup> specification. 
 The coexistence of these two specification in the Solid ecosystem 
 adds complexity in having to support seamless integration between
 these competing authorization standards.</p>
@@ -343,19 +346,14 @@ to integrate both new and existing workflows into the Solid ecosystem.</p>
   <dt id="ref-2">[2]</dt>
   <dd resource="https://dx.doi.org/10.1145/3591366.3591385" typeof="schema:Chapter">Verborgh, R.: Re-Decentralizing the Web, For Good This Time. In: Seneviratne, O. and Hendler, J. (eds.) Linking the World’s Information: Essays on Tim Berners-Lee’s Invention of the World Wide Web. pp. 215–230. ACM (2023). doi:10.1145/3591366.3591385</dd>
   <dt id="ref-3">[3]</dt>
-  <dd resource="#van2024community" typeof="schema:Article">Van Herwegen, J., Verborgh, R.: The Community Solid Server: Supporting research &amp; development in an evolving ecosystem. Semantic Web. 15, 2597–2611 (2024).</dd>
+  <dd resource="https://communitysolidserver.github.io/CommunitySolidServer/latest/" typeof="schema:Article">Van Herwegen, J., Verborgh, R.: The Community Solid Server: Supporting research &amp; development in an evolving ecosystem. Semantic Web. 15, 2597–2611 (2024).</dd>
   <dt id="ref-4">[4]</dt>
   <dd resource="https://www.inrupt.com/products/enterprise-solid-server" typeof="schema:CreativeWork">Enterprise Server Software From Inrupt. <a href="https://www.inrupt.com/products/enterprise-solid-server">https:/​/​www.inrupt.com/products/enterprise-solid-server</a></dd>
-  <dt id="ref-5">[5]</dt>
-  <dd resource="https://solidproject.org/TR/wac" typeof="schema:CreativeWork">Web Access Control. <a href="https://solidproject.org/TR/wac">https:/​/​solidproject.org/TR/wac</a></dd>
-  <dt id="ref-6">[6]</dt>
-  <dd resource="https://solidproject.org/TR/acp" typeof="schema:CreativeWork">Access Control Policy (ACP). <a href="https://solidproject.org/TR/acp">https:/​/​solidproject.org/TR/acp</a></dd>
 </dl>
 </section>
 </footer>
 
 </div>
-<p>&lt;/div&gt;</p>
 
 
 <div class="footnotes" role="doc-endnotes">
@@ -363,11 +361,20 @@ to integrate both new and existing workflows into the Solid ecosystem.</p>
     <li id="fn:tutorial">
       <p><a href="https://solidlabresearch.github.io/Bashlib/tutorial/">https:/​/​solidlabresearch.github.io/Bashlib/tutorial/</a> <a href="#fnref:tutorial" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
+    <li id="fn:solid-oidc">
+      <p><a href="https://solidproject.org/TR/oidc">https:/​/​solidproject.org/TR/oidc</a> <a href="#fnref:solid-oidc" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
     <li id="fn:CSS">
       <p>The <a href="[cite:cites van2024community](https://communitysolidserver.github.io/CommunitySolidServer/latest/)">Community Solid Server</a> is a research project developed by the <a href="https://knows.idlab.ugent.be/">KNoWS team</a> at Ghent University. <a href="#fnref:CSS" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
     <li id="fn:ESS">
       <p>The <a href="https://www.inrupt.com/">Enterprise Solid Server</a> is a Solid Server implementation by <a href="https://www.inrupt.com/">Inrupt</a>. <a href="#fnref:ESS" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:ACP">
+      <p><a href="https://solidproject.org/TR/acp">https:/​/​solidproject.org/TR/acp</a> <a href="#fnref:ACP" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:WAC">
+      <p><a href="https://solidproject.org/TR/wac">https:/​/​solidproject.org/TR/wac</a> <a href="#fnref:WAC" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
 </div>
