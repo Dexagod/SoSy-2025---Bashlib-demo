@@ -9,8 +9,9 @@
   
   <meta name="citation_title" content="Providing Command Line support for Solid Workflows">
   <meta name="citation_author" content="Ruben Dedecker" />
+  <meta name="citation_author" content="Pieter Colpaert" />
   
-  <meta name="citation_publication_date" content="2025/03/06" />
+  <meta name="citation_publication_date" content="2025/03/07" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -19,6 +20,7 @@
 
   <ul id="authors">
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://www.rubendedecker.be/" typeof="foaf:Person schema:Person" resource="https://pod.rubendedecker.be/profile/card#me">Ruben Dedecker</a></li>
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://pietercolpaert.be/" typeof="foaf:Person schema:Person" resource="https://pietercolpaert.be/#me">Pieter Colpaert</a></li>
   </ul>
 
   <ul id="affiliations">
@@ -39,31 +41,28 @@
 <div datatype="rdf:HTML" property="schema:description">
       <h2 property="schema:name">Abstract</h2>
       <!-- Context      -->
-      <p>Integration of the Solid protocol is restrictive to 
-Web-based applications in much of its tooling support.
+      <p>The tooling around the Solid protocol for realizing personal data vaults is mainly focused on Web-based applications.
 <!-- Need         -->
-Where existing professional and consumer workflows make heavy use
-of command-line utilities to manage and exchange data as resources, 
-driving Solid integration in this ecosystem lacks tooling support.
+Nevertheless, system administrators may prefer command-line workflows 
+for resource management and exchange, for which tooling is currently lacking.
 <!-- Task         -->
-For this, we developed Bashlib as a wrapper around
-often used command-line utilities while providing support
-for Solid authentication and authorization functionality.
+We developed a command-line tool called Bashlib as a 
+wrapper around common command-line utilities that integrates
+Solid authentication and authorization functionality.
 <!-- Object       -->
-Through support for multiple authentication flows and
-switching sessions on the fly, support for the two
-authorization standards, resource management utilities
-and solid specific functionality such as querying, 
-Bashlib provides a well-rounded basis for integrating
-existing workflows with Solid through minimal effort.
+Support is provided for multiple authentication flows 
+and switching authenticated sessions. Management for resource 
+sharing has been integrated supporting both authorization standards 
+in WAC and ACP, as well as utilities for resource management
+and the evaluation of SPARQL queries over the document structure.
 <!-- Findings     -->
 <!-- ## No findings ## -->
 <!-- Conclusion   -->
-By providing command-line integration with the Solid ecosystem,
-Bashlib opens up adoption pathways for existing data flows to
-expand data sharing in decentralized ecosystems.
+This way, Bashlib opens up adoption pathways for existing data flows to
+expand data sharing in the Solid ecosystem.
 <!-- Perspectives -->
 <!-- ## No perspectives ## --></p>
+
     </div>
 </section>
 
@@ -81,27 +80,29 @@ expand data sharing in decentralized ecosystems.
 
         <p>The <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.semanticscholar.org/paper/Solid-%3A-A-Platform-for-Decentralized-Social-Based-Sambra-Mansour/5ac93548fd0628f7ff8ff65b5878d04c79c513c4">Solid Specification</a> <span class="references">[<a href="#ref-1">1</a>]</span> defines a protocol for
 managing and exchanging data as resources on the Web, to empower its users 
-with control over their data and providing data interoperability in the Web ecosystem.
-By focussing support on the Web application ecosystem, workflows that do not use the 
-browser ecosystem for data management and exchange are restricted in their options to integrate
-with the Solid ecosystem.
-As the command line ecosystem is a rich ecosystem of workflows that orchestrate 
-data management, sharing, and integration, both for private and professional workflows,
-providing integration options for the Solid protocol can enable straightforward
-mapping of these existing command line workflows to the Solid ecosystem.</p>
+with control over their data and providing data interoperability 
+in the Web ecosystem<span class="references">[<a href="#ref-2">2</a>]</span>.
+By focusing support on the Web application ecosystem, 
+workflows for data management and exchange that are 
+outside the browser ecosystem are restricted in their options 
+to integrate with the Solid ecosystem.
+The command line supports a rich ecosystem of workflows that orchestrate 
+data management, sharing, and integration for both private and professional use cases.
+Providing support for Solid in this command line ecosystem can enable straightforward
+integration pathways for these workflows into the Solid ecosystem.</p>
 
         <p>To address this lack of tooling, we introduce BashLib as a Solid compatibility wrapper
 for the command line. It provides commonly used command line utilities for resource management 
 and integrates them with Solid functionality for authentication, authorization, and managing 
-resource sharing on the Web. Additional solid specific functionality such as evaluating
-SPARQL queries over remote resources and local editing of remote resources are also included.
+resource sharing on the Web. 
+Additional capabilities such as evaluation of SPARQL queries over the document structure 
+of a Solid pod and local editing of remote resources are also provided.
 By bridging the gap between Solid and the command line, 
-BashLib aims to facilitate broader adoption 
-of the Solid ecosystem in non-Web workflows.</p>
+BashLib aims to facilitate broader adoption of the Solid outside the browser ecosystem.</p>
 
         <p>Setting an example use-case, we have the case of a researcher making a presentation
 for an upcoming conference. We look at how Bashlib can support our researcher Ben 
-to integrate their workflow pf receiving feedback from colleagues on a presentation 
+to integrate their workflow of receiving feedback from colleagues on a presentation 
 in development and the public publishing the resulting presentation using their Solid pod.</p>
 
         <p>The full tutorial of Bashlib can be found on the <a href="https://solidlabresearch.github.io/Bashlib/tutorial/">website</a><sup id="fnref:tutorial"><a href="#fn:tutorial" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>.</p>
@@ -123,15 +124,17 @@ serving as the foundation for its privacy and data sharing mechanism.
 As different workflows impose different constraints on the management
 of user identity and authentication, Bashlib supports the following authentication capabilities:</p>
 
-        <p>(i) Compatibility with the <a href="todo: spec link">Solid OpenID Connect</a><a href="todo: citation link"></a> 
+        <p>%PC: Why not create an <code>&lt;ol&gt;</code> tag here?
+%PC: I Think for Solid-OIDC you’d better just do a footnote/href?
+(i) Compatibility with the <a href="todo: spec link">Solid OpenID Connect</a><a href="todo: citation link"></a> 
 speficiation is integrated in Bashlib, proving an interactive authentication flow via the browser.
 As this is the standardized login flow, it is compatible with all Solid Server implementations, 
 but it comes with a downside of requiring user interaction to authenticate
 which can make it undesirable in automated command-line workflows.</p>
 
         <p>(ii) Alternatively, support is added for the token-based authentication flows that are 
-provided by both the Community Solid Server (CSS) <span class="references">[<a href="#ref-2">2</a>]</span><sup id="fnref:CSS"><a href="#fn:CSS" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>
-and the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.inrupt.com/products/enterprise-solid-server">Enterprise Solid Server (ESS)</a> <span class="references">[<a href="#ref-3">3</a>]</span><sup id="fnref:ESS"><a href="#fn:ESS" class="footnote" rel="footnote" role="doc-noteref">3</a></sup> implementations of the Solid Server.
+provided by both the Community Solid Server (CSS) <span class="references">[<a href="#ref-3">3</a>]</span><sup id="fnref:CSS"><a href="#fn:CSS" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>
+and the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.inrupt.com/products/enterprise-solid-server">Enterprise Solid Server (ESS)</a> <span class="references">[<a href="#ref-4">4</a>]</span><sup id="fnref:ESS"><a href="#fn:ESS" class="footnote" rel="footnote" role="doc-noteref">3</a></sup> implementations of the Solid Server.
 The token-based authentication flow does not require any user interaction after
 generating the client token, enabling the integration of Solid in automated background
 workflows and preventing login fatigue for frequently used actions.
@@ -176,10 +179,11 @@ information via the interactive command line form.</p>
         <!-- * The AC mechanism is discovered on the fly -->
         <!-- * For managing Access Control Resources, we do not support the full suite of functionality yet, only the Universal API by INRUPT tooling. -->
 
+        <!-- TODO PC: don’t cite a spec: create a footnote instead. -->
         <p>The Solid authorization mechanism determines how resource access is granted and managed.
 The current Solid ecosystem supports two distinct authorization systems: 
-The <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solidproject.org/TR/wac">Web Access Control (WAC)</a> <span class="references">[<a href="#ref-4">4</a>]</span> specification and 
-the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solidproject.org/TR/acp">Access Control Policy (ACP)</a> <span class="references">[<a href="#ref-5">5</a>]</span> specification. 
+The <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solidproject.org/TR/wac">Web Access Control (WAC)</a> <span class="references">[<a href="#ref-5">5</a>]</span> specification and 
+the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://solidproject.org/TR/acp">Access Control Policy (ACP)</a> <span class="references">[<a href="#ref-6">6</a>]</span> specification. 
 The coexistence of these two specification in the Solid ecosystem 
 adds complexity in having to support seamless integration between
 these competing authorization standards.</p>
@@ -233,6 +237,7 @@ The &#8211;default flag sets up recursive permissions for all child resources in
 When using ACP-based Solid pods, individual resource permissions have to be assigned in Bashlib.</id></p>
           </figcaption>
 </figure>
+
       </div>
 </section>
 
@@ -313,18 +318,17 @@ npx bashlib-solid cp sosy-presentation/ base:/public/publication/
         <!-- * Bashlib provides the necessary functionality to integrate Solid in CLI workflows. -->
         <!-- * Bashlib can perform automated background tasks for multiple profiles. -->
 
-        <p>BashLib provides a base set of utilities to help integrate command-line
-workflows in the Solid ecosystem, providing a simple interface for authentication 
+        <p>In this paper we introduced BashLib, which provides a base set of utilities to help integrating command-line
+workflows in the Solid ecosystem.
+It provides a simple interface for authentication 
 and authorization management and mapping commonly used utilities for data management. 
 Supporting both the specification compliant authentication flow and
 the Solid-server specific authentication-token based flow, 
 Bashlib aims to be both future-proof and provide support for automated background workflows.
 Similarly the support for both authorization systems aims to allow integration throughout
-the full Solid ecosystem.</p>
-
-        <p>Bridging the gap between command-line workflows and the Solid ecosystem, 
-BashLib lowers the barrier to entry for developers and systems administrators
-to integrate both new and existing workflows for data management into the Solid ecosystem.</p>
+the full Solid ecosystem.
+This way, BashLib lowers the barrier for developers and systems administrators
+to integrate both new and existing workflows into the Solid ecosystem.</p>
 
       </div>
 </section>
@@ -337,12 +341,14 @@ to integrate both new and existing workflows for data management into the Solid 
   <dt id="ref-1">[1]</dt>
   <dd resource="https://www.semanticscholar.org/paper/Solid-%3A-A-Platform-for-Decentralized-Social-Based-Sambra-Mansour/5ac93548fd0628f7ff8ff65b5878d04c79c513c4" typeof="schema:Article">Sambra, A., Mansour, E., Hawke, S., Zereba, M., Greco, N., Ghanem, A., Zagidulin, D., Aboulnaga, A., Berners-Lee, T.: Solid : A Platform for Decentralized Social Applications Based on Linked Data. Presented at the (2016).</dd>
   <dt id="ref-2">[2]</dt>
-  <dd resource="#van2024community" typeof="schema:Article">Van Herwegen, J., Verborgh, R.: The Community Solid Server: Supporting research &amp; development in an evolving ecosystem. Semantic Web. 15, 2597–2611 (2024).</dd>
+  <dd resource="https://dx.doi.org/10.1145/3591366.3591385" typeof="schema:Chapter">Verborgh, R.: Re-Decentralizing the Web, For Good This Time. In: Seneviratne, O. and Hendler, J. (eds.) Linking the World’s Information: Essays on Tim Berners-Lee’s Invention of the World Wide Web. pp. 215–230. ACM (2023). doi:10.1145/3591366.3591385</dd>
   <dt id="ref-3">[3]</dt>
-  <dd resource="https://www.inrupt.com/products/enterprise-solid-server" typeof="schema:CreativeWork">Enterprise Server Software From Inrupt. <a href="https://www.inrupt.com/products/enterprise-solid-server">https:/​/​www.inrupt.com/products/enterprise-solid-server</a></dd>
+  <dd resource="#van2024community" typeof="schema:Article">Van Herwegen, J., Verborgh, R.: The Community Solid Server: Supporting research &amp; development in an evolving ecosystem. Semantic Web. 15, 2597–2611 (2024).</dd>
   <dt id="ref-4">[4]</dt>
-  <dd resource="https://solidproject.org/TR/wac" typeof="schema:CreativeWork">Web Access Control. <a href="https://solidproject.org/TR/wac">https:/​/​solidproject.org/TR/wac</a></dd>
+  <dd resource="https://www.inrupt.com/products/enterprise-solid-server" typeof="schema:CreativeWork">Enterprise Server Software From Inrupt. <a href="https://www.inrupt.com/products/enterprise-solid-server">https:/​/​www.inrupt.com/products/enterprise-solid-server</a></dd>
   <dt id="ref-5">[5]</dt>
+  <dd resource="https://solidproject.org/TR/wac" typeof="schema:CreativeWork">Web Access Control. <a href="https://solidproject.org/TR/wac">https:/​/​solidproject.org/TR/wac</a></dd>
+  <dt id="ref-6">[6]</dt>
   <dd resource="https://solidproject.org/TR/acp" typeof="schema:CreativeWork">Access Control Policy (ACP). <a href="https://solidproject.org/TR/acp">https:/​/​solidproject.org/TR/acp</a></dd>
 </dl>
 </section>
