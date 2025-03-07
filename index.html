@@ -232,12 +232,8 @@ npx bashlib-solid access set --default
     base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=r
 </code></pre>
 <figcaption>
-            <p><span class="label">Listing 2:</span> The researcher creates a public presentations container located at https://ben.myPodProvider.org/public/presentations/
-where public read permissions are set (p=r).
-Next a private container is created at https://ben.myPodProvider.org/private/presentations/
-where only the colleagues are given read access (<id>=r).
-The &#8211;default flag sets up recursive permissions for all child resources in WAC-based Solid Servers.
-When using ACP-based Solid pods, individual resource permissions have to be assigned in Bashlib.</id></p>
+            <p><span class="label">Listing 2:</span> A location for public presentations setting read permissions for the public (p=r) is created at https://ben.myPodProvider.org/public/presentations/.
+The private location created at https://ben.myPodProvider.org/private/presentations/ however only provides read access for Pieter and Ruben (&lt;id&gt;=r).</p>
           </figcaption>
 </figure>
 
@@ -291,24 +287,22 @@ presentation in <a href="#public-publishing">Listing 4</a>
 that makes the result public.</p>
 
         <figure id="private-publishing" class="listing">
-<pre style="font-size: 14px"><code>
-&gt; publish-private.sh
+<pre style="font-size: 14px"><code>&gt; publish-private.sh
 #!/bin/bash
 npx bashlib-solid cp sosy-presentation/ base:/private/publication/
 </code></pre>
 <figcaption>
-            <p><span class="label">Listing 3:</span> The researcher publishes the presentation directory to their private publications container on their Solid pod.</p>
+            <p><span class="label">Listing 3:</span> Publish work in progress in the restricted access container on the user Solid pod.</p>
           </figcaption>
 </figure>
 
         <figure id="public-publishing" class="listing">
-<pre style="font-size: 14px"><code>
-&gt; publish-public.sh
+<pre style="font-size: 14px"><code>&gt; publish-public.sh
 #!/bin/bash
 npx bashlib-solid cp sosy-presentation/ base:/public/publication/
 </code></pre>
 <figcaption>
-            <p><span class="label">Listing 4:</span> The researcher publishes the presentation directory to their public publications container on their Solid pod.</p>
+            <p><span class="label">Listing 4:</span> Publish finished work in the public access container on the user Solid pod.</p>
           </figcaption>
 </figure>
       </div>
