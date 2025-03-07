@@ -11,26 +11,25 @@ serving as the foundation for its privacy and data sharing mechanism.
 As different workflows impose different constraints on the management
 of user identity and authentication, Bashlib supports the following authentication capabilities:
 
-%PC: Why not create an `<ol>` tag here?
-%PC: I Think for Solid-OIDC you’d better just do a footnote/href?
-(i) Compatibility with the [Solid OpenID Connect](todo: spec link)[](todo: citation link) 
+
+1. Compatibility with the [Solid OpenID Connect](https://solidproject.org/TR/oidc)[^solid-oidc]
 speficiation is integrated in Bashlib, proving an interactive authentication flow via the browser.
 As this is the standardized login flow, it is compatible with all Solid Server implementations, 
 but it comes with a downside of requiring user interaction to authenticate
 which can make it undesirable in automated command-line workflows.
-
-(ii) Alternatively, support is added for the token-based authentication flows that are 
+   
+2. Alternatively, support is added for token-based authentication options that are 
 provided by both the [Community Solid Server (CSS)](cite:cites van2024community)[^CSS]
 and the [Enterprise Solid Server (ESS)](cite:cites ess)[^ESS] implementations of the Solid Server.
-The token-based authentication flow does not require any user interaction after
-generating the client token, enabling the integration of Solid in automated background
-workflows and preventing login fatigue for frequently used actions.
-Care must be taken when using this authentication flow however,
-as the lack of standardization means there is no guarantee in compliance 
-with other server implementations or even future 
-versions of the CSS and ESS implementations.
+These token-based authentication options do not require any user interaction after
+generating the client token when setting up new authenticated sessions, 
+making them ideal for automated background workflows or commonly used routines.
+As these token-based authentication options are not standardized 
+and differ between implementations, they can break at any point
+and are advised only for server hosting does not update their
+underlying implementation or that is under user control.
 
-(iii) Support is provided for switching authenticated sessions.
+3. Finally, support is provided for switching authenticated sessions.
 As different workflows may have different identity requirements, as is often the case
 when combining professional and personal data management tasks, 
 authentication systems need to take this into account.
@@ -59,4 +58,4 @@ The researcher creates a credential token to setup automated authentication for 
 
 [^CSS]: The [Community Solid Server]([cite:cites van2024community](https://communitysolidserver.github.io/CommunitySolidServer/latest/)) is a research project developed by the [KNoWS team](https://knows.idlab.ugent.be/) at Ghent University.
 [^ESS]: The [Enterprise Solid Server](https://www.inrupt.com/) is a Solid Server implementation by [Inrupt](https://www.inrupt.com/).
-
+[^solid-oidc]: [https://solidproject.org/TR/oidc](https://solidproject.org/TR/oidc)
