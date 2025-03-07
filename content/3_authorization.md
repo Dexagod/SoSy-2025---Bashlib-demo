@@ -5,6 +5,7 @@
 <!-- * The AC mechanism is discovered on the fly -->
 <!-- * For managing Access Control Resources, we do not support the full suite of functionality yet, only the Universal API by INRUPT tooling. -->
 
+<!-- TODO PC: don’t cite a spec: create a footnote instead. -->
 The Solid authorization mechanism determines how resource access is granted and managed.
 The current Solid ecosystem supports two distinct authorization systems: 
 The [Web Access Control (WAC)](cite:cites WAC) specification and 
