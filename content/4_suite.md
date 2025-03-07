@@ -2,7 +2,7 @@
 {:#suite}
 
 To support the resource management requirements of command-line based workflows,
-Bashlib integrates a set of prominent command-line utilities for resource management
+Bashlib integrates a set of command-line utilities for resource management
 with the Solid resource interface.
 
 <!-- Basic Shell Utilities -->
