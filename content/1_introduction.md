@@ -6,7 +6,7 @@
 <!-- * We present BashLib as a Solid authentication wrapper for common BASH functionality and Solid-specific additions -->
 <!-- * Goal to enable CLI flows to integrate Solid in their workflow -->
 
-The [Solid Specification](cite:cites sambra_solid_2016) defines a protocol for
+The [Solid Specification](cite:cites verborgh_timbl_chapter_2023}) defines a protocol for
 managing and exchanging data as resources on the Web, to empower its users 
 with control over their data and providing data interoperability in the Web ecosystem.
 By focussing support on the Web application ecosystem, workflows that do not use the 
