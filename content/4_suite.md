@@ -24,8 +24,8 @@ and not all flags are implemented.
 
 Additionally, some Solid specific utility functions have been added.
 The `query` utility executes a SPARQL query either over the individual resources
-or the federated set of resources in the target Solid container. 
-Only RDF resources are taken into account here, ignoring the other resources.
+or the federated set of resources in the target Solid container, 
+using the [Comunica](https://comunica.dev/)[](cite:cites taelman2018comunica) query engine. 
 The `edit` utility is used to load an external resource in a local editor,
 and update the resulting resource when saved.
 

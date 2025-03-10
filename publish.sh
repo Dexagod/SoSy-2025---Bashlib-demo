@@ -1,0 +1,1 @@
+sld cp output/. base:/scholar/publications/SoSy2025/
