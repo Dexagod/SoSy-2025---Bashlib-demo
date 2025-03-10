@@ -10,8 +10,9 @@
   <meta name="citation_title" content="Providing Command Line support for Solid Workflows">
   <meta name="citation_author" content="Ruben Dedecker" />
   <meta name="citation_author" content="Pieter Colpaert" />
+  <meta name="citation_author" content="Ruben Verborgh" />
   
-  <meta name="citation_publication_date" content="2025/03/07" />
+  <meta name="citation_publication_date" content="2025/03/10" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
@@ -21,6 +22,7 @@
   <ul id="authors">
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://www.rubendedecker.be/" typeof="foaf:Person schema:Person" resource="https://pod.rubendedecker.be/profile/card#me">Ruben Dedecker</a></li>
     <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://pietercolpaert.be/" typeof="foaf:Person schema:Person" resource="https://pietercolpaert.be/#me">Pieter Colpaert</a></li>
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://ruben.verborgh.org/" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Ruben Verborgh</a></li>
   </ul>
 
   <ul id="affiliations">
@@ -267,8 +269,8 @@ and not all flags are implemented.</p>
 
         <p>Additionally, some Solid specific utility functions have been added.
 The <code>query</code> utility executes a SPARQL query either over the individual resources
-or the federated set of resources in the target Solid container. 
-Only RDF resources are taken into account here, ignoring the other resources.
+or the federated set of resources in the target Solid container, 
+using the <a href="https://comunica.dev/">Comunica</a><span class="references">[<a href="#ref-5">5</a>]</span> query engine. 
 The <code>edit</code> utility is used to load an external resource in a local editor,
 and update the resulting resource when saved.</p>
 
@@ -343,6 +345,8 @@ to integrate both new and existing workflows into the Solid ecosystem.</p>
   <dd resource="https://communitysolidserver.github.io/CommunitySolidServer/latest/" typeof="schema:Article">Van Herwegen, J., Verborgh, R.: The Community Solid Server: Supporting research &amp; development in an evolving ecosystem. Semantic Web. 15, 2597–2611 (2024).</dd>
   <dt id="ref-4">[4]</dt>
   <dd resource="https://www.inrupt.com/products/enterprise-solid-server" typeof="schema:CreativeWork">Enterprise Server Software From Inrupt. <a href="https://www.inrupt.com/products/enterprise-solid-server">https:/​/​www.inrupt.com/products/enterprise-solid-server</a></dd>
+  <dt id="ref-5">[5]</dt>
+  <dd resource="#taelman2018comunica" typeof="schema:Article">Taelman, R., Van Herwegen, J., Vander Sande, M., Verborgh, R.: Comunica: a modular SPARQL query engine for the web. In: The Semantic Web–ISWC 2018: 17th International Semantic Web Conference, Monterey, CA, USA, October 8–12, 2018, Proceedings, Part II 17. pp. 239–255. Springer (2018).</dd>
 </dl>
 </section>
 </footer>
