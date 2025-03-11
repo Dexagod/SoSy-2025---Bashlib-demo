@@ -8,26 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   <meta name="citation_title" content="Providing Command Line support for Solid Workflows">
-  <meta name="citation_author" content="Ruben Dedecker" />
-  <meta name="citation_author" content="Pieter Colpaert" />
-  <meta name="citation_author" content="Ruben Verborgh" />
   
-  <meta name="citation_publication_date" content="2025/03/10" />
+  
+  <meta name="citation_publication_date" content="2025/03/11" />
 </head>
 
 <body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
   <header>
   <h1 id="providing-command-line-support-for-solid-workflows">Providing Command Line support for Solid Workflows</h1>
-
-  <ul id="authors">
-    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://www.rubendedecker.be/" typeof="foaf:Person schema:Person" resource="https://pod.rubendedecker.be/profile/card#me">Ruben Dedecker</a></li>
-    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://pietercolpaert.be/" typeof="foaf:Person schema:Person" resource="https://pietercolpaert.be/#me">Pieter Colpaert</a></li>
-    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="https://ruben.verborgh.org/" typeof="foaf:Person schema:Person" resource="https://ruben.verborgh.org/profile/#me">Ruben Verborgh</a></li>
-  </ul>
-
-  <ul id="affiliations">
-    <li id="myaffiliation">Ghent University - imec.</li>
-  </ul>
 
 </header>
 
@@ -64,7 +52,6 @@ This way, Bashlib opens up adoption pathways for existing data flows to
 expand data sharing in the Solid ecosystem.
 <!-- Perspectives -->
 <!-- ## No perspectives ## --></p>
-
     </div>
 </section>
 
@@ -107,7 +94,7 @@ for an upcoming conference. We look at how Bashlib can support our researcher Be
 to integrate their workflow of receiving feedback from colleagues on a presentation 
 in development and the public publishing the resulting presentation using their Solid pod.</p>
 
-        <p>The full tutorial of Bashlib can be found on the <a href="https://solidlabresearch.github.io/Bashlib/tutorial/">website</a><sup id="fnref:tutorial"><a href="#fn:tutorial" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>.</p>
+        <p>The full tutorial of Bashlib can be found on this <a href="https://solidlabresearch.github.io/Bashlib/tutorial/">website</a><sup id="fnref:tutorial"><a href="#fn:tutorial" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>.</p>
 
       </div>
 </section>
@@ -218,7 +205,7 @@ where work in progress can be shared with colleagues.
 To achieve this, Ben creates a public Solid container
 in which the final publications are published, 
 and a private Solid container to store in-progress work
-to be shared with their colleagues Pieter and Ruben as shown in <a href="#auth-listing">Listing 2</a>.</p>
+to be shared with their colleagues Jos and Ella as shown in <a href="#auth-listing">Listing 2</a>.</p>
 
         <figure id="auth-listing" class="listing">
 <pre style="font-size: 14px"><code># Initializing the public workspace
@@ -229,13 +216,13 @@ npx bashlib-solid access set --default
 # Intializing the private workspace
 npx bashlib-solid mkdir base:/private/presentations/
 npx bashlib-solid access set --default 
-    base:/private/presentations/ https://pieter.myPodProvider.org/profile/card#me=r
+    base:/private/presentations/ https://jos.myPodProvider.org/profile/card#me=r
 npx bashlib-solid access set --default 
-    base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=r
+    base:/private/presentations/ https://ella.myPodProvider.org/profile/card#me=r
 </code></pre>
 <figcaption>
             <p><span class="label">Listing 2:</span> A location for public presentations setting read permissions for the public (p=r) is created at https://ben.myPodProvider.org/public/presentations/.
-The private location created at https://ben.myPodProvider.org/private/presentations/ however only provides read access for Pieter and Ruben (&lt;id&gt;=r).</p>
+The private location created at https://ben.myPodProvider.org/private/presentations/ however only provides read access for Jos and Ella (&lt;id&gt;=r).</p>
           </figcaption>
 </figure>
 
@@ -283,7 +270,7 @@ command line workflows into the Solid ecosystem.</p>
 for in-progress work and public presentations in <a href="#auth-listing">Listing 2</a>,
 Ben now sets up the scripts to sync his work to
 the in-progress container <a href="#private-publishing">Listing 3</a>
-that will be visible for Pieter and Ruben to read
+that will be visible for Jos and Ella to read
 for feedback, and the sync script for the finished 
 presentation in <a href="#public-publishing">Listing 4</a>
 that makes the result public.</p>
@@ -334,7 +321,9 @@ to integrate both new and existing workflows into the Solid ecosystem.</p>
 
 </main>
 
-<footer><section>
+
+<footer>
+<section>
 <h2 id="references">References</h2>
 <dl class="references">
   <dt id="ref-1">[1]</dt>
@@ -351,9 +340,14 @@ to integrate both new and existing workflows into the Solid ecosystem.</p>
 </section>
 </footer>
 
-</div>
+<div class="footnotes">
+  <hr />
+  <p>The 2nd Solid Symposium Poster Session, co-located with the 3rd Solid Symposium, April 24 &#8211; 25, 2025, Leiden, Netherlands</p>
+  <p>© 2025 Copyright for this paper by its authors. Use permitted under Creative Commons License Attribution 4.0 International (CC BY 4.0).</p>
+  <hr />
 
 
+</div></div>
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:tutorial">
