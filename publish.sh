@@ -1,1 +1,1 @@
-sld cp output/. base:/scholar/publications/SoSy2025/
+sld cp -o output/. base:/scholar/publications/SoSy2025/
