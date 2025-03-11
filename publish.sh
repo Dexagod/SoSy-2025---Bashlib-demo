@@ -1,1 +1,0 @@
-sld cp -o output/. base:/scholar/publications/SoSy2025/
