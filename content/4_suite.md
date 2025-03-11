@@ -39,7 +39,7 @@ In our running example, having created the Solid containers
 for in-progress work and public presentations in [](#auth-listing),
 Ben now sets up the scripts to sync his work to
 the in-progress container [](#private-publishing)
-that will be visible for Pieter and Ruben to read
+that will be visible for Jos and Ella to read
 for feedback, and the sync script for the finished 
 presentation in [](#public-publishing)
 that makes the result public.

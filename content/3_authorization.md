@@ -39,7 +39,7 @@ where work in progress can be shared with colleagues.
 To achieve this, Ben creates a public Solid container
 in which the final publications are published, 
 and a private Solid container to store in-progress work
-to be shared with their colleagues Pieter and Ruben as shown in [](#auth-listing).
+to be shared with their colleagues Jos and Ella as shown in [](#auth-listing).
 
 <figure id="auth-listing" class="listing">
 <pre style="font-size: 14px"><code># Initializing the public workspace
@@ -50,13 +50,13 @@ npx bashlib-solid access set --default
 # Intializing the private workspace
 npx bashlib-solid mkdir base:/private/presentations/
 npx bashlib-solid access set --default 
-    base:/private/presentations/ https://pieter.myPodProvider.org/profile/card#me=r
+    base:/private/presentations/ https://jos.myPodProvider.org/profile/card#me=r
 npx bashlib-solid access set --default 
-    base:/private/presentations/ https://ruben.myPodProvider.org/profile/card#me=r
+    base:/private/presentations/ https://ella.myPodProvider.org/profile/card#me=r
 </code></pre>
 <figcaption markdown="block">
 A location for public presentations setting read permissions for the public (p=r) is created at https://ben.myPodProvider.org/public/presentations/.
-The private location created at https://ben.myPodProvider.org/private/presentations/ however only provides read access for Pieter and Ruben (\<id\>=r).
+The private location created at https://ben.myPodProvider.org/private/presentations/ however only provides read access for Jos and Ella (\<id\>=r).
 </figcaption>
 </figure>
 

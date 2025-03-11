@@ -33,6 +33,6 @@ for an upcoming conference. We look at how Bashlib can support our researcher Be
 to integrate their workflow of receiving feedback from colleagues on a presentation 
 in development and the public publishing the resulting presentation using their Solid pod.
 
-The full tutorial of Bashlib can be found on this [website](https://solidlabresearch.github.io/Bashlib/tutorial/)[^tutorial].
+The full tutorial of Bashlib can be found on this [website]()[^tutorial].
 
-[^tutorial]: [https://solidlabresearch.github.io/Bashlib/tutorial/](https://solidlabresearch.github.io/Bashlib/tutorial/)
+[^tutorial]: redacted for double blind
